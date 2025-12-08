@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import userFetch from "../../../Hooks/userFetch";
-
+import { Link } from "react-router-dom";
 function Users() {
    const {data,isLoading,isError}=userFetch('users');
 
@@ -21,8 +21,6 @@ function Users() {
         <tr>
           <th scope="col">#</th>
           <th scope="col">Name</th>
-          <th scope="col">Email</th>
-          <th scope="col">Image</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
@@ -32,16 +30,9 @@ function Users() {
           <tr key={user.id}>
             <th scope="row">{user.id}</th>
             <td>{user.name}</td>
-            <td>{user.email}</td>
+          
             <td>
-              <img
-                style={{ width: "100px", borderRadius: "8px" }}
-                src={user.imageUrl}
-                alt={user.name}
-              />
-            </td>
-            <td>
-              <button className="btn btn-success btn-sm me-2">Add</button>
+              <link className="btn btn-outline-dark" to={''} >details</link>
               <button className="btn btn-danger btn-sm">Delete</button>
             </td>
           </tr>
