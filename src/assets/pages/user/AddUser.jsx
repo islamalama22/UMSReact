@@ -7,7 +7,7 @@ function AddUser() {
   const {register,handleSubmit,formState:{errors}}=useForm();
 
   const AddUser=(test)=>{
-console.log(test);
+   console.log(test);
   }
  
   return (
