@@ -26,7 +26,7 @@ function Navbar() {
                 <Link
                   className="nav-link active"
                   aria-current="page"
-                  to={"/add"}
+                  to={"/users/add"}
                 >
                   Add User
                 </Link>
