@@ -6,9 +6,9 @@ function AddUser() {
 
   const {register,handleSubmit,formState:{errors}}=useForm();
 
-  const AddUser=(test)=>{
-   console.log(test);
-  }
+  const AddUser=async (values)=>{
+   const response=await axios.post(`${import.meta.env.VITE_BURL}/users` ,values)
+    };
  
   return (
     <div className="container">
@@ -25,8 +25,8 @@ function AddUser() {
         </div>
 
          <div className="form-floating">
-          <input  {...register('age')} type="text" className="form-control" id="floatingPassword" placeholder="Password" />
-          <label htmlFor="floatingPassword">Password</label>
+          <input  {...register('age')} type="text" className="form-control" id="floatingage" placeholder="Password" />
+          <label htmlFor="floatingage">age</label>
         </div>
 
         <button className='btn btn-outline-info'> Add User</button>
