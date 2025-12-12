@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-function useFetch(path) {
+function useFetch(path,dep=[]) {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsErro] = useState("");
@@ -20,7 +20,8 @@ function useFetch(path) {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, dep); 
+  //  when the dep  is  change  will  rernder
   return { data, isLoading, isError };
 }
 
