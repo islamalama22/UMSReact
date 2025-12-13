@@ -5,10 +5,7 @@ import { Link } from "react-router-dom";
 import { Bounce, toast } from "react-toastify";
 function Users() {
   const [page, setPage] = useState(1);
-  const { data, isLoading, isError } = useFetch(
-    `users?limit=5&skip=${(page - 1) * 5}`,
-    [page]
-  );
+  const { data, isLoading, isError } = useFetch(`users?limit=5&skip=${(page - 1) * 5}`, [page] );
   // api?limit=4   will  get  4 usedrs
   // page=>1
   // limit=>5
@@ -16,9 +13,7 @@ function Users() {
 
   const deleteUser = async (id) => {
     try {
-      const resposne = await axios.delete(
-        `${import.meta.env.VITE_BURL}/users/${id}`
-      );
+      const resposne = await axios.delete(`${import.meta.env.VITE_BURL}/users/${id}` );
       console.log(resposne);
 
       if (resposne.status == 200) {
@@ -26,7 +21,7 @@ function Users() {
           position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
-          closeOnClick: false,
+          closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
@@ -107,30 +102,21 @@ for (let i = 1; i <= numberOfPages; i++) {
           ))}
         </tbody>
       </table>
-<ul className="pagination">
-  <li className="page-item">
-    <button
-      className="page-link"
-      disabled={page === 1}
-      onClick={() => setPage(page - 1)}
-    >
-      previous
-    </button>
-  </li>
+     <ul className="pagination">
+        <li className="page-item">
+          <button className="page-link"  disabled={page === 1}  onClick={() => setPage(page - 1)} >
+            previous
+          </button>
+        </li>
 
-  {pageItems}
+       {pageItems}
 
-  <li className="page-item">
-    <button
-      className="page-link"
-      disabled={page === numberOfPages}
-      onClick={() => setPage(page + 1)}
-    >
-      next
-    </button>
-  </li>
-</ul>
-
+        <li className="page-item">
+          <button  className="page-link" disabled={page === numberOfPages} onClick={() => setPage(page + 1)}>
+            next
+          </button>
+        </li>
+     </ul>
     </>
   );
 }
